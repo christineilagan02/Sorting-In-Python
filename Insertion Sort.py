@@ -1,4 +1,4 @@
-# https://youtu.be/nCNfu_zNhyI
+# https://youtu.be/K0zTIF3rm9s
 # Insertion Sort
 
 def sort(nums):

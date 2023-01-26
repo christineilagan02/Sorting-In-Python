@@ -1,41 +1,55 @@
-# https://youtu.be/5iSZ7mh_RAk
-# Quick Sort
+# # https://youtu.be/5iSZ7mh_RAk
+# # Quick Sort
 
-def swap(a, b, arr):
-    if a!=b:
-        tmp = arr[a]
-        arr[a] = arr[b]
-        arr[b] = tmp
-        
-        print(elements)
+# Function to find the partition position
+def partition(array, low, high):
 
-def quick_sort(elements, start, end):
-    if start < end:
-        pi = partition(elements, start, end)
-        quick_sort(elements, start, pi-1)
-        quick_sort(elements, pi+1, end)
-        
-        print(elements)
+	# Choose the rightmost element as pivot
+	pivot = array[high]
 
-def partition(elements, start, end):
-    pivot_index = start
-    pivot = elements[pivot_index]
+	# Pointer for greater element
+	i = low - 1
 
-    while start < end:
-        while start < len(elements) and elements[start] <= pivot:
-            start+=1
+	# Traverse through all elements
+	# compare each element with pivot
+	for j in range(low, high):
+		if array[j] <= pivot:
+			# If element smaller than pivot is found
+			# swap it with the greater element pointed by i
+			i = i + 1
 
-        while elements[end] > pivot:
-            end-=1
+			# Swapping element at i with element at j
+			(array[i], array[j]) = (array[j], array[i])
 
-        if start < end:
-            swap(start, end, elements)
+	# Swap the pivot element with
+	# e greater element specified by i
+	(array[i + 1], array[high]) = (array[high], array[i + 1])
 
-    swap(pivot_index, end, elements)
-    print(elements)
-    
-    return end
+	# Return the position from where partition is done
+	return i + 1 
 
-elements = [55, 13, 11, 88, 63, 17, 29, 94, 5, 92]
-quick_sort(elements, 0, len(elements)-1)
-print(elements)
+# Function to perform quicksort
+
+
+def quick_sort(array, low, high):
+	if low < high:
+
+		# Find pivot element such that
+		# element smaller than pivot are on the left
+		# element greater than pivot are on the right
+		pi = partition(array, low, high)
+
+		# Recursive call on the left of pivot
+		quick_sort(array, low, pi - 1)
+
+		# Recursive call on the right of pivot
+		quick_sort(array, pi + 1, high)
+
+
+# Driver code
+array = [55, 13, 11, 88, 63, 17, 29, 94, 5, 92]
+quick_sort(array, 0, len(array) - 1)
+
+print(f'Sorted array: {array}')
+
+# This code is contributed by Adnan Aliakbar

@@ -3,14 +3,12 @@
 
 def sort(nums):
     for i in range(1, len(nums)):
-        anchor = nums[i]
+        key = nums[i]
         j = i - 1
-        while j>=0 and anchor < nums[j]:
+        while j>=0 and key < nums[j]:
             nums[j+1] = nums[j]
             j = j - 1
-        nums[j+1] = anchor
-        
-        print(nums)
+        nums[j+1] = key
 
 nums = [55, 13, 11, 88, 63, 17, 29, 94, 5, 92]
 sort(nums)
